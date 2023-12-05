@@ -35,7 +35,7 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(swo => {
-    swo.SwaggerDoc("v1.0.0", new OpenApiInfo
+    swo.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Minimal API AuthJWT",
         Description = "Desenvolvido por Leandro Rocha, com base na implementação Eduador Pires @desenvolvedor.io",
@@ -152,8 +152,8 @@ void MapActions(WebApplication app)
     {
         if (String.IsNullOrWhiteSpace(term)) return Results.NotFound();
         var fornecedor = await context.Fornecedor.Where(p =>
-            (p.Name.ToLower().Contains(term.ToLower()) == true ||
-            p.Documento.ToLower().Contains(term) == true)
+            ((p.Name ?? "").ToLower().Contains(term.ToLower()) == true ||
+            (p.Documento ?? "").ToLower().Contains(term) == true)
         ).ToArrayAsync();
 
         if (fornecedor == null) return Results.NotFound();
