@@ -128,7 +128,8 @@ void MapActions(WebApplication app)
         return Results.NoContent();
     }).Produces(204)
       .WithName("DeleteFornecedor")
-      .WithTags("Fornecedor");
+      .WithTags("Fornecedor")
+      .RequireAuthorization("DeleteFornecedor");
 
     app.MapPut("/fornecedor/{id}", [Authorize] async (AppDbContext context, Fornecedor f, Guid id) =>
     {
