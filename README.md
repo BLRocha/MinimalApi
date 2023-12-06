@@ -14,3 +14,4 @@ update-database -Context NetDevPackAppDb
 dotnet run
 
 ```
+![img](https://img001.prntscr.com/file/img001/6l33gny_RuGzeWvNJ5763A.png)
